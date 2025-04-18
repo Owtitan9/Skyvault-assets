@@ -127,6 +127,65 @@
     }
   }
 </script>
+<div class="buy-section">
+  <button id="connectWallet">Connect Wallet</button>
+  <button id="buyNow" disabled>Buy $SKYV</button>
+</div>
 
+<script>
+  let walletConnected = false;
+
+  document.getElementById("connectWallet").addEventListener("click", async () => {
+    if ("solana" in window) {
+      try {
+        const resp = await window.solana.connect();
+        walletConnected = true;
+        document.getElementById("buyNow").disabled = false;
+        alert(`Wallet connected: ${resp.publicKey.toString()}`);
+      } catch (err) {
+        console.error("Wallet connection failed", err);
+      }
+    } else {
+      alert("Phantom Wallet not found. Please install it.");
+    }
+  });
+
+  document.getElementById("buyNow").addEventListener("click", () => {
+    if (walletConnected) {
+      window.open("https://app.orca.so", "_blank"); // You can replace this with your real swap link
+    }
+  });
+</script>
+
+<style>
+  .buy-section {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .buy-section button {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(45deg, #00faff, #007aff);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00faffaa;
+    transition: transform 0.2s ease;
+  }
+
+  .buy-section button:hover {
+    transform: scale(1.05);
+  }
+
+  .buy-section button:disabled {
+    background: #444;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+</style>
 </body>
 </html>
