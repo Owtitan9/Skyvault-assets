@@ -1,0 +1,13 @@
+{
+  "chainId": 101,
+  "address": "ABeF1fPYDA8MC6XHSx8ADsyDVZF6j7ywgrrr2tD7qGugb",
+  "symbol": "SKYV",
+  "name": "SkyVault Coin",
+  "decimals": 9,
+  "logoURI": "https://raw.githubusercontent.com/owtitan9/skyvault-assets/main/logo.png",
+  "tags": [
+    "utility-token",
+    "owtitan",
+    "skyvault"
+  ]
+}
